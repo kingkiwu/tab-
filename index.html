@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>tab栏</title>
+<style>
+*{ margin:0; padding:0;list-style: none;}
+body {font:12px/1.5 Tahoma;}
+#outer {
+	width: 1000px;
+	margin: 0 auto;
+}
+#tab {
+	position: fixed;
+	/*overflow:hidden;*/
+	zoom:1;
+	margin: 100px;
+}
+#tab li {
+	float:left;
+	color:#fff;
+	cursor:pointer;
+	margin-left: 50px;
+}
+#tab li img {
+	display: inline-block;
+	width: 200px;
+	height: 70px;
+}
+#tab li.current {
+	box-shadow: 0 0 20px rgba(0, 0, 0, 0.6);
+	transform: scale(1.2) translate(0, 20px);
+	transition: 0.5s ease;
+}
+#content {
+
+}
+#content ul {
+	display:none;
+}
+#content ul img {
+	width: 100%;
+	height: 100%;
+	background-size: cover;
+}
+</style>
+</head>
+
+<body>
+<!-- html代码begin -->
+<div id="outer">
+    <ul id="tab">
+        <li class="current">
+			<img src="images/pic6.jpg" alt=""/>
+		</li>
+        <li>
+			<img src="images/pic7.jpg" alt=""/>
+		</li>
+		<li>
+			<img src="images/pic8.jpg" alt=""/>
+		</li>
+    </ul>
+    <div id="content">
+        <ul style="display:block;">
+			<img src="images/pic6.jpg" alt=""/>
+        </ul>
+        <ul>
+			<img src="images/pic7.jpg" alt=""/>
+        </ul>
+        <ul>
+			<img src="images/pic8.jpg" alt=""/>
+        </ul>
+    </div>
+</div>
+<!-- html代码end -->
+
+<script src="http://www.lanrenzhijia.com/ajaxjs/jquery.min.js"></script>
+<script>
+	$(function(){
+		window.onload = function()
+		{
+			var $li = $('#tab li');
+			var $ul = $('#content ul');
+						
+			$li.mouseover(function(){
+				var $this = $(this);
+				var $t = $this.index();
+				$li.removeClass();
+				$this.addClass('current');
+				$ul.css('display','none');
+				$ul.eq($t).css('display','block');
+			})
+		}
+	});
+</script>
+
+</body>
+</html>
